@@ -1,6 +1,6 @@
 /*
- * File:        uart.h
- * Purpose:     UART function prototypes and constants
+ * File:        TimerA.h
+ * Purpose:     TimerA function prototypes and constants
  *
  */
 
