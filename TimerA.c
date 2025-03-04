@@ -30,49 +30,59 @@ int TIMER_A0_PWM_Init(uint16_t period, double percentDutyCycle, uint16_t pin)
 	// Timer A0.1
 	if (pin == 1)
 	{
-            
+		// Set the pin to output
+		P2->DIR |= BIT4;
+		// Set the pin to primary mode
+		P2->SEL1 &= ~BIT4;
+		P2->SEL0 |= BIT4;
 	}
-    // Timer A0.2
 	else if (pin == 2)
 	{
-            
-	}	
-    // Timer A0.3
+		// Set the pin to output
+		P2->DIR |= BIT5;
+		// Set the pin to primary mode
+		P2->SEL1 &= ~BIT5;
+		P2->SEL0 |= BIT5;
+	}
 	else if (pin == 3)
 	{
-             
-	}	
-    // Timer A0.4
+		// Set the pin to output
+		P2->DIR |= BIT6;
+		// Set the pin to primary mode
+		P2->SEL1 &= ~BIT6;
+		P2->SEL0 |= BIT6;
+	}
 	else if (pin == 4)
 	{
-            
+		// Set the pin to output
+		P2->DIR |= BIT7;
+		// Set the pin to primary mode
+		P2->SEL1 &= ~BIT7;
+		P2->SEL0 |= BIT7;
 	}
 	else return -2;
-
-
-
 	
 	// save the period for this timer instance
 	// DEFAULT_PERIOD_A0[pin] where pin is the pin number
 	DEFAULT_PERIOD_A0[pin] = period;
-	// TIMER_A0->CCR[0]
-	;
-	
+	// TIMER_A0->CCR[0]	
+	TIMER_A0->CCR[0] = period;
 	
 
 	// TIMER_A0->CCTL[pin]
-    ;
+    TIMER_A0->CCTL[pin] = something;
 	
 	// set the duty cycle
 	uint16_t dutyCycle = (uint16_t) (percentDutyCycle * (double)DEFAULT_PERIOD_A0[pin]);
 
 	// CCR[n] contains the dutyCycle just calculated, where n is the pin number
     //TIMER_A0->CCR[pin]
-    ;
+    TIMER_A0->CCR[pin] = dutyCycle;
 	
 	// Timer CONTROL register
 	// TIMER_A0->CTL
-	; 
+	TIMER_A0->CTL = something; 
+
 	return 0;
 }
 //***************************PWM_Duty1*******************************
@@ -82,7 +92,11 @@ int TIMER_A0_PWM_Init(uint16_t period, double percentDutyCycle, uint16_t pin)
 // percentDutyCycle is a number between 0 and 1  (ie. 0.5 = 50%)
 void TIMER_A0_PWM_DutyCycle(double percentDutyCycle, uint16_t pin)
 {
-
+	// set the duty cycle
+	uint16_t dutyCycle = (uint16_t) (percentDutyCycle * (double)DEFAULT_PERIOD_A0[pin]);
+	// CCR[n] contains the dutyCycle just calculated, where n is the pin number
+	//TIMER_A0->CCR[pin]
+	TIMER_A0->CCR[pin] = dutyCycle;
 }
 
 //***************************PWM_Init*******************************
@@ -98,7 +112,11 @@ int TIMER_A2_PWM_Init(uint16_t period, double percentDutyCycle, uint16_t pin)
 	// TimerA2.1
 	if (pin == 1)
 	{
-
+		// Set the pin to output
+		P5->DIR |= BIT6;
+		// Set the pin to primary mode
+		P5->SEL1 &= ~BIT6;
+		P5->SEL0 |= BIT6;
 	}
 	else return -2; 
 
@@ -114,6 +132,10 @@ int TIMER_A2_PWM_Init(uint16_t period, double percentDutyCycle, uint16_t pin)
 // 
 void TIMER_A2_PWM_DutyCycle(double percentDutyCycle, uint16_t pin)
 {
-
+	// set the duty cycle
+	uint16_t dutyCycle = (uint16_t) (percentDutyCycle * (double)DEFAULT_PERIOD_A2[pin]);
+	// CCR[n] contains the dutyCycle just calculated, where n is the pin number
+	//TIMER_A2->CCR[pin]
+	TIMER_A2->CCR[pin] = dutyCycle;
 }
 
