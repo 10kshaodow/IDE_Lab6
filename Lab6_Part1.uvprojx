@@ -10,7 +10,7 @@
       <TargetName>Target 1</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <uAC6>1</uAC6>
+      <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>MSP432P401R</Device>
@@ -258,17 +258,17 @@
                 <Size>0x0</Size>
               </XRAM>
               <OCR_RVCT1>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT1>
               <OCR_RVCT2>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT2>
               <OCR_RVCT3>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT3>
@@ -312,7 +312,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>2</Optim>
+            <Optim>1</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -391,6 +391,36 @@
               <FileName>TimerA.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\TimerA.c</FilePath>
+            </File>
+            <File>
+              <FileName>Leds.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Leds.c</FilePath>
+            </File>
+            <File>
+              <FileName>Common.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Common.h</FilePath>
+            </File>
+            <File>
+              <FileName>Leds.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Leds.h</FilePath>
+            </File>
+            <File>
+              <FileName>uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\uart.c</FilePath>
+            </File>
+            <File>
+              <FileName>uart.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\uart.h</FilePath>
+            </File>
+            <File>
+              <FileName>TimerA.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\TimerA.h</FilePath>
             </File>
           </Files>
         </Group>
