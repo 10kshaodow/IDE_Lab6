@@ -11,7 +11,6 @@
 #include "msp.h"
 #include "uart.h"
 
-
 /**
  * Waits for a delay (in milliseconds)
  * 
@@ -33,10 +32,11 @@ int main(void) {
 	
 	/* Part 1 - UNCOMMENT THIS
 	// Generate 20% duty cycle at 10kHz
-	// INSERT CODE HERE
+	// INSERT CODE HERE */
+	TIMER_A0_PWM_Init((uint16_t)10000, 0.2, 1);
+	TIMER_A2_PWM_Init(10000 , 0.2, 4);
 	
 	for(;;) ;  //then loop forever
-	*/
 	
 	/* Part 2 - UNCOMMENT THIS
 	for(;;)  //loop forever
@@ -47,34 +47,33 @@ int main(void) {
 		char c = 48;
 		int i=0;
 		
-		// 0 to 100% duty cycle in forward direction
-		for (i=0; i<100; i++) {
-		    // INSERT CODE HERE
-			
+				// 0 to 100% duty cycle in forward direction
+		for (i = 0; i < 100; i++) {
+			// INSERT CODE HERE
+			TIMER_A0_PWM_DutyCycle(0.01*i, 1);
 			delay(10);
 		}
 		
 		// 100% down to 0% duty cycle in the forward direction
-		for (i=100; i>=0; i--) {
-		    // INSERT CODE HERE
-			
+		for (i = 100; i >= 0; i--) {
+			// INSERT CODE HERE
+			TIMER_A0_PWM_DutyCycle(0.01*i, 1);
 			delay(10);
 		}
 		
 		// 0 to 100% duty cycle in reverse direction
-		for (i=0; i<100; i++) {
-		    // INSERT CODE HERE
-			
+		for (i = 0; i < 100; i++) {
+			// INSERT CODE HERE
+			TIMER_A0_PWM_DutyCycle(0.01*i, 2);
 			delay(10);
 		}
 		
 		// 100% down to 0% duty cycle in the reverse direction
-		for (i=100; i>=0; i--) {
-		    // INSERT CODE HERE
-			
+		for (i = 100; i >= 0; i--) {
+			// INSERT CODE HERE
+			TIMER_A0_PWM_DutyCycle(0.01*i, 2);
 			delay(10);
 		}
-
 	}
 	*/
 	return 0;
