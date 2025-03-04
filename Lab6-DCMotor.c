@@ -33,7 +33,7 @@ int main(void) {
 	/* Part 1 - UNCOMMENT THIS
 	// Generate 20% duty cycle at 10kHz
 	// INSERT CODE HERE */
-	TIMER_A0_PWM_Init((uint16_t)10000, 0.2, 1);
+	TIMER_A0_PWM_Init(10000, 0.2, 1);
 	TIMER_A2_PWM_Init(10000 , 0.2, 4);
 	
 	for(;;) ;  //then loop forever
