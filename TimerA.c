@@ -70,7 +70,9 @@ int TIMER_A0_PWM_Init(uint16_t period, double percentDutyCycle, uint16_t pin)
 	
 
 	// TIMER_A0->CCTL[pin]
-    TIMER_A0->CCTL[pin] = something;
+    TIMER_A0->CCTL[pin] &= ~BIT7;
+		TIMER_A0->CCTL[pin] |= BIT6;
+		TIMER_A0->CCTL[pin] &= ~BIT5;
 	
 	// set the duty cycle
 	uint16_t dutyCycle = (uint16_t) (percentDutyCycle * (double)DEFAULT_PERIOD_A0[pin]);
@@ -81,7 +83,14 @@ int TIMER_A0_PWM_Init(uint16_t period, double percentDutyCycle, uint16_t pin)
 	
 	// Timer CONTROL register
 	// TIMER_A0->CTL
-	TIMER_A0->CTL = something; 
+	
+	TIMER_A0->CTL |= BIT9;
+	TIMER_A0->CTL &= ~BIT8; 
+	TIMER_A0->CTL &= ~BIT7; 
+	TIMER_A0->CTL &= ~BIT6; 
+	TIMER_A0->CTL |= BIT5; 
+	TIMER_A0->CTL |= BIT4; 
+	TIMER_A0->CTL |= BIT1; 
 
 	return 0;
 }
