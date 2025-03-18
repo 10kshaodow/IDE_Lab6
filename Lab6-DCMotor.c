@@ -38,50 +38,29 @@ int main(void) {
 	TIMER_A0_PWM_Init(10000, 0.2, 1);
 	TIMER_A0_PWM_Init(10000 , 0, 4);
 	
-	//for(;;) ;  //then loop forever
-	
-	/* Part 2 - UNCOMMENT THIS */
-	
-	for(;;)  //loop forever
-	{
-		uint16_t dc = 0;
-		uint16_t freq = 10000; // Frequency = 10 kHz 
-		uint16_t dir = 0;
-		char c = 48;
-		int i=0;
-		
-				// 0 to 100% duty cycle in forward direction
-		for (i = 0; i < 10; i++) {
-			// INSERT CODE HERE
-			TIMER_A0_PWM_DutyCycle((double)(0.1*i), 1);
-			TIMER_A0_PWM_DutyCycle(0, 4);
-			delay(10);
-		}
-		
-		// 100% down to 0% duty cycle in the forward direction
-		for (i = 10; i >= 0; i--) {
-			// INSERT CODE HERE
-			TIMER_A0_PWM_DutyCycle((double)(0.1*i), 1);
-			TIMER_A0_PWM_DutyCycle(0, 4);
-			delay(10);
-		}
-		
-		// 0 to 100% duty cycle in reverse direction
-		for (i = 0; i < 10; i++) {
-			// INSERT CODE HERE
-			TIMER_A0_PWM_DutyCycle((double)(0.1*i), 4);
-			TIMER_A0_PWM_DutyCycle(0.0, 1);
-			delay(10);
-		}
-		
-		// 100% down to 0% duty cycle in the reverse direction
-		for (i = 10; i >= 0; i--) {
-			// INSERT CODE HERE
-			TIMER_A0_PWM_DutyCycle((double)(0.1*i), 4);
-			TIMER_A0_PWM_DutyCycle(0.0, 1);
-			delay(10);
+	for(;;) {
+		int forward = 1;
+		int phase = 0;
+		while (TRUE){
+			// Turn off all coils , Set GPIO pins to 0
+			// Set one pin high at a time
+			if ( forward ) {
+			if ( phase == 0) { /* turn on coil A */ ; phase ++;} // A ,1 a
+			else if ( phase == 1) { /* turn on coil B */ ; phase ++;} // B ,2 a
+			else if ( phase == 2) { /* turn on coil C */ ; phase ++;} // C ,1 b
+			else { /* turn on coil D */ ; phase =0;} // D ,2 b
+			}
+			else { // reverse
+			if ( phase == 0) { /* turn on coil D */ ; phase ++;} // D ,2 b
+			else if ( phase == 1) { /* turn on coil C */ ; phase ++;} // C ,1 b
+			else if ( phase == 2) { /* turn on coil B */ ; phase ++;} // B ,2 a
+			else { /* turn on coil A */ ; phase =0;} // A ,1 a
+			}
+			// Note - you need to write your own delay function
+			delay (10); // smaller values = faster speed
 		}
 	}
+	
 	return 0;
 }
 
