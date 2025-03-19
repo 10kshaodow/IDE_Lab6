@@ -45,16 +45,16 @@ int main(void) {
 			// Turn off all coils , Set GPIO pins to 0
 			// Set one pin high at a time
 			if ( forward ) {
-			if ( phase == 0) { /* turn on coil A */ ; phase ++;} // A ,1 a
-			else if ( phase == 1) { /* turn on coil B */ ; phase ++;} // B ,2 a
-			else if ( phase == 2) { /* turn on coil C */ ; phase ++;} // C ,1 b
-			else { /* turn on coil D */ ; phase =0;} // D ,2 b
+			if ( phase == 0) { /* turn on coil A */ P4->OUT |= BIT1; phase ++;} // A ,1 a
+			else if ( phase == 1) { /* turn on coil B */ P4->OUT |= BIT2; phase ++;} // B ,2 a
+			else if ( phase == 2) { /* turn on coil C */ P4->OUT |= BIT3; phase ++;} // C ,1 b
+			else { /* turn on coil D */ P4->OUT |= BIT4; phase =0;} // D ,2 b
 			}
 			else { // reverse
-			if ( phase == 0) { /* turn on coil D */ ; phase ++;} // D ,2 b
-			else if ( phase == 1) { /* turn on coil C */ ; phase ++;} // C ,1 b
-			else if ( phase == 2) { /* turn on coil B */ ; phase ++;} // B ,2 a
-			else { /* turn on coil A */ ; phase =0;} // A ,1 a
+			if ( phase == 0) { /* turn on coil D */ P4->OUT |= BIT4; phase ++;} // D ,2 b
+			else if ( phase == 1) { /* turn on coil C */ P4->OUT |= BIT3; phase ++;} // C ,1 b
+			else if ( phase == 2) { /* turn on coil B */ P4->OUT |= BIT2; phase ++;} // B ,2 a
+			else { /* turn on coil A */ P4->OUT |= BIT1; phase =0;} // A ,1 a
 			}
 			// Note - you need to write your own delay function
 			delay (10); // smaller values = faster speed
