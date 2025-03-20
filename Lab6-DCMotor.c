@@ -35,53 +35,25 @@ int main(void) {
 	/* Part 1 - UNCOMMENT THIS
 	// Generate 20% duty cycle at 10kHz
 	// INSERT CODE HERE */
-	TIMER_A0_PWM_Init(10000, 0.2, 1);
-	TIMER_A0_PWM_Init(10000 , 0, 4);
-	
-	//for(;;) ;  //then loop forever
-	
-	/* Part 2 - UNCOMMENT THIS */
-	
+	TIMER_A2_PWM_Init(50, 0.075, 1); // 50Hz frequency, 7.5% duty cycle (1.5ms pulse width)
+
 	for(;;)  //loop forever
 	{
-		uint16_t dc = 0;
-		uint16_t freq = 10000; // Frequency = 10 kHz 
-		uint16_t dir = 0;
-		char c = 48;
-		int i=0;
+		// Change the pulse width back to 1.5ms (7.5% duty cycle)
+		TIMER_A2_PWM_DutyCycle(0.075, 1);
+		delay(1000);
+
+		// Uncomment below for second signoff
 		
-				// 0 to 100% duty cycle in forward direction
-		for (i = 0; i < 10; i++) {
-			// INSERT CODE HERE
-			TIMER_A0_PWM_DutyCycle((double)(0.1*i), 1);
-			TIMER_A0_PWM_DutyCycle(0, 4);
-			delay(10);
-		}
-		
-		// 100% down to 0% duty cycle in the forward direction
-		for (i = 10; i >= 0; i--) {
-			// INSERT CODE HERE
-			TIMER_A0_PWM_DutyCycle((double)(0.1*i), 1);
-			TIMER_A0_PWM_DutyCycle(0, 4);
-			delay(10);
-		}
-		
-		// 0 to 100% duty cycle in reverse direction
-		for (i = 0; i < 10; i++) {
-			// INSERT CODE HERE
-			TIMER_A0_PWM_DutyCycle((double)(0.1*i), 4);
-			TIMER_A0_PWM_DutyCycle(0.0, 1);
-			delay(10);
-		}
-		
-		// 100% down to 0% duty cycle in the reverse direction
-		for (i = 10; i >= 0; i--) {
-			// INSERT CODE HERE
-			TIMER_A0_PWM_DutyCycle((double)(0.1*i), 4);
-			TIMER_A0_PWM_DutyCycle(0.0, 1);
-			delay(10);
-		}
+		// Change the pulse width to 2ms (10% duty cycle)
+		// TIMER_A2_PWM_DutyCycle(0.10, 1);
+		// delay(1000);
+
+		// Change the pulse width to 1ms (5% duty cycle)
+		// TIMER_A2_PWM_DutyCycle(0.05, 1);
+		// delay(1000);
 	}
+
 	return 0;
 }
 
