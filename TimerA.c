@@ -88,7 +88,7 @@ int TIMER_A0_PWM_Init(uint16_t period, double percentDutyCycle, uint16_t pin)
 	TIMER_A0->CTL &= ~BIT8; 
 	TIMER_A0->CTL &= ~BIT7; 
 	TIMER_A0->CTL &= ~BIT6; 
-	TIMER_A0->CTL |= BIT5; 
+	TIMER_A0->CTL &= ~BIT5; 
 	TIMER_A0->CTL |= BIT4; 
 	TIMER_A0->CTL |= BIT1; 
 
@@ -183,4 +183,3 @@ void TIMER_A2_PWM_DutyCycle(double percentDutyCycle, uint16_t pin)
 	//TIMER_A2->CCR[pin]
 	TIMER_A2->CCR[pin] = dutyCycle;
 }
-
