@@ -134,9 +134,9 @@ int TIMER_A2_PWM_Init(uint16_t period, double percentDutyCycle, uint16_t pin)
 	
 		// save the period for this timer instance
 		// DEFAULT_PERIOD_A2[pin] where pin is the pin number
-		DEFAULT_PERIOD_A2[pin] = period/64;
+		DEFAULT_PERIOD_A2[pin] = (SystemCoreClock/period)/64;
 		// TIMER_A2->CCR[0]	
-		TIMER_A2->CCR[0] = period/64;
+		TIMER_A2->CCR[0] = (SystemCoreClock/period)/64;
 	
 
 		// TIMER_A0->CCTL[pin]
@@ -158,7 +158,7 @@ int TIMER_A2_PWM_Init(uint16_t period, double percentDutyCycle, uint16_t pin)
 	TIMER_A2->CTL &= ~BIT8; 
 	TIMER_A2->CTL |= BIT7; 
 	TIMER_A2->CTL |= BIT6; 
-	TIMER_A2->CTL |= BIT5; 
+	TIMER_A2->CTL &= ~BIT5; 
 	TIMER_A2->CTL |= BIT4; 
 	TIMER_A2->CTL |= BIT1; 
 	
