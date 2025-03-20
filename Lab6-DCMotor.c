@@ -35,7 +35,7 @@ int main(void) {
 	/* Part 1 - UNCOMMENT THIS
 	// Generate 20% duty cycle at 10kHz
 	// INSERT CODE HERE */
-	TIMER_A2_PWM_Init(50, 0.075, 1); // 50Hz frequency, 7.5% duty cycle (1.5ms pulse width)
+	TIMER_A2_PWM_Init(50.0, 1 - 0.075, 1); // 50Hz frequency, 7.5% duty cycle (1.5ms pulse width)
 
 	for(;;)  //loop forever
 	{
