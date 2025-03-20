@@ -40,8 +40,8 @@ int main(void) {
 	for(;;)  //loop forever
 	{
 		// Change the pulse width back to 1.5ms (7.5% duty cycle)
-		TIMER_A2_PWM_DutyCycle(0.075, 1);
-		delay(1000);
+		//TIMER_A2_PWM_DutyCycle(0.075, 1);
+		//delay(1000);
 
 		// Uncomment below for second signoff
 		
